@@ -118,7 +118,7 @@ print("geleceği","yazanlar", sep = "_")
 """
 
 #VERİ YAPILARI
-
+"""
 #Listeler
 
 #[]
@@ -312,10 +312,6 @@ t[2] = 99 #Değiştirilemez hata verir
 #Sözlük Oluşturma
 
 
-sozluk
-
-len(sozluk)
-
 sozluk = {"REG":10,
           "LOJ": 20,
           "CART": 30}
@@ -389,4 +385,375 @@ sozluk[t] = "yeni bir şey"
 sozluk #Tuple eklenebilir.
 
 #Veri Yapıları - Setler
+
+#Sırasızdır değerleri eşsizdir değiştirilebilirdir farklı tipleri barındırabilir.
+
+#Set oluşturma
+
+s = set()
+s
+
+l = [1,"a","ali",123]
+s = set(l)
+s
+
+t = ("a","ali")
+
+s = set(t)
+s
+
+ali = "lutfen_ata_bakma_uzaya_git"
+type(ali)
+
+s = set(ali)
+s
+
+l = ["ali", "lutfen", "ata", "bakma","uzaya","git","git","ali","git"]
+l
+
+s = set(l)
+s
+
+len(s)
+
+l[0]
+
+s[0] #sırasızdır index kullanılmaz
+
+#Eleman Eklme ve Çıkarma
+
+l = ["gelecegi", "yazanlar"]
+
+s = set(l)
+s
+
+dir(s)
+
+s.add("ile")
+s
+
+s.add("gelecege_git")
+s
+
+s.add("ile")
+s
+
+s.remove("ali")
+s
+
+s.remove("ali") #ali yok silmez
+s.discard("ali") #silmez bulamadığı için ama hata vermez
+
+#Setler - Klasik Küme İşlemleri
+
+# diffrence() ile iki kümenin farkını ya da "-" ifadesi
+# intersection() iki küme kesisimi ya da "&" ifadesi
+# union() iki kümenin birleşimi
+# symmetric_difference() ikisinde de olmayanları.
+
+#Difference
+
+set1 = set([1,3,5])
+set2 = set([1,2,3])
+
+set1.difference(set2)
+set2.difference(set1)
+
+#symetric_difference
+
+set1.symmetric_difference(set2)
+
+set1 - set2
+set2 - set1
+
+#intersection
+
+set1.intersection(set2)
+set2.intersection(set1)
+
+set1 & set2
+kesisim = set1 & set2
+
+set1.intersection_update(set2)
+set1
+
+#union
+
+birlesim = set1.union(set2)
+birlesim
+
+#Setlerde Sorgu İşlemleri
+
+set1 = set([7,8,9])
+set2 = set([5,6,7,8,9,10])
+
+#iki kümenin kesişiminin bol olup olmadığının sorgulanması
+
+set1.isdisjoint(set2)
+
+# bir kümenin bütün elemanlarının başka bir küme içerisinde yer alıp almadığı
+
+set1.issubset(set2)
+
+# bir kümenin bir diğer kümeyi kapsayıp kapsamadığı
+
+set2.issuperset(set1)
+
+"""
+
+#FONKSIYONLARA GIRIS VE FONK OKURYAZARLIGI
+
+#Fonksiyon Nasıl Yazılır?
+
+def kare_al(x):
+    print(x**2)
+
+kare_al(3)
+
+#Bilgi Notuyla Çıktı Üretmek
+
+def kare_al(x):
+    print("Girilen Sayının Karesi:"+str(x**2))
+
+kare_al(5)
+
+def kare_al(x):
+    print("Girilen "+str(x)+" Sayının Karesi:"+str(x**2))
+
+kare_al(5)
+
+#İki Argümanlı Fonksiyon Tanimlamak
+
+def kare_al(x):
+    print(x**2)
+
+def carpma_yap(x,y):
+    print(x*y)
+
+carpma_yap(2,3)
+
+#Ön Tanımlı Argümanlar
+
+def carpma_yap(x,y = 1):
+    print(x*y)
+
+carpma_yap(3)
+
+carpma_yap(3,3) #Değer verilirse ön tanımlı yok sayılır.
+
+def carpma_yap(x,y = 1):
+    print(x*y)
+
+carpma_yap(y =2,x=3)
+
+#Ne zaman fonksiyon yazılır?
+
+#ısı, nem, şarj
+
+def direk_hesap(isi,nem,sarj):
+    print((isi+nem) / sarj)
+
+direk_hesap(25,40,70)
+
+
+#Çıktıyı Girdi Olarak Kullanmak
+
+def direk_hesap(isi,nem,sarj):
+    print((isi+nem) / sarj)
+
+cikti = direk_hesap(25,40,70)
+cikti
+print(cikti)
+
+def direk_hesap(isi,nem,sarj):
+    return (isi+nem) / sarj
+
+direk_hesap(25,40,70)*9
+
+cikti = direk_hesap(25,40,70)
+cikti
+print(cikti)
+
+#Local ve Global Değişkenler
+
+x = 10
+y = 20
+
+def carpma_yap(x,y):
+    return x*y
+
+carpma_yap(2,3)
+
+#Local Etki Alanından Global Etki Alanını Değiştirmek
+
+x = []
+
+def eleman_ekle(y):
+    x.append(y)
+    print(str(y)+ " ifadesi eklendi")
+
+eleman_ekle(1)
+
+eleman_ekle("veli")
+
+x
+
+#Karar & Kontrol Yapıları
+
+#True - False Sorgulamaları
+
+sinir = 5000
+
+sinir == 4000
+
+sinir == 5000
+
+#if
+sinir = 5000
+gelir = 10000
+
+gelir < sinir
+
+if gelir < sinir:
+    print("Gelir sınırdan küçük")
+
+if gelir > sinir:
+    print("Gelir sınırdan büyük")
+
+#else
+sinir = 50000
+gelir = 10000
+
+if gelir > sinir:
+    print("Gelir sınırdan büyük")
+else:
+    print("Gelir sınırdan küçük")
+
+#diger örnek
+
+sinir = 50000
+gelir = 50000
+
+if gelir == sinir:
+    print("Gelir sinira eşittir")
+else:
+    print("Gelir sınıra eşit değildir.")
+
+#elif
+
+sinir = 50000
+gelir1 = 60000
+gelir2 = 50000
+gelir3 = 35000
+
+if gelir1 > sinir:
+    print("Tebrikler, hediye kazandınız")
+elif gelir1 < sinir:
+    print("Malesef kazanamadınız")
+else:
+    print("Gelir sınıra eşittir")
+
+if gelir2 > sinir:
+    print("Tebrikler, hediye kazandınız")
+elif gelir2 < sinir:
+    print("Malesef kazanamadınız")
+else:
+    print("Gelir sınıra eşittir")
+
+if gelir3 > sinir:
+    print("Tebrikler, hediye kazandınız")
+elif gelir3 < sinir:
+    print("Malesef kazanamadınız")
+else:
+    print("Gelir sınıra eşittir")
+
+#mini uygulama
+
+sinir = 50000
+magaza_adi = input("Mağaza adı nedir?")
+gelir = int(input("Geliriniz ne kadar?"))
+
+if gelir > sinir:
+    print("Tebrikler "+magaza_adi+ " promosyon kazandınız")
+elif gelir < sinir:
+    print("Uyarı! Çok düşük gelir:"+ str(gelir))
+else:
+    print("Çalışmaya devam")
+
+#Döngüler - For
+
+ogrenci = ["ali","veli","isik","berk"]
+
+ogrenci[0]
+ogrenci[1]
+ogrenci[2]
+ogrenci[3]
+
+for i in ogrenci:
+    print(i)
+
+#For Örnek
+
+maaslar = [1000,2000,3000,4000,5000]
+
+for maas in maaslar:
+    print(maas)
+
+#Döngü ve fonksiyonları birlikte kullanmak
+
+#maaslara %20 zam yapılacak
+
+def yeni_maas(x):
+    print(x*20/100+x)
+
+yeni_maas(1000)
+
+for i in maaslar:
+    yeni_maas(i)
+
+
+#mini uygulama
+#if, for ve fonksiyonları birlikte kullanmak
+
+maaslar = [1000,2000,3000,4000,5000]
+
+def maas_ust(x):
+    print(x*10/100 + x)
+
+def maas_alt(x):
+    print(x*20/100 + x)
+
+for i in maaslar:
+    if i >= 3000:
+        maas_ust(i)
+    else:
+        maas_alt(i)
+
+#break & continue
+
+maaslar = [8000,5000,2000,3000,1000,3000,7000,1000]
+
+dir(maaslar)
+
+maaslar.sort()
+maaslar
+
+for i in maaslar:
+    if i == 3000:
+        print("kesildi")
+        break
+    print(i)
+
+for i in maaslar:
+    if i == 3000:
+        continue
+    print(i)
+
+#While
+
+sayi = 1
+
+while sayi < 10:
+    sayi += 1
+    print(sayi)
 
