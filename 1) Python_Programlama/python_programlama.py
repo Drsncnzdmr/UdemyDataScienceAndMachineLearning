@@ -757,3 +757,281 @@ while sayi < 10:
     sayi += 1
     print(sayi)
 
+# NESNE YÖNELİMLİ PROGRAMLAMA
+
+#Sinif Nedir?
+
+#Sınıf Özellikleri (Class Attributes)
+
+class VeriBilimci():
+    bolum = ''
+    sql = 'Evet'
+    deneyim_yili = 0
+    bildigi_diller = []
+
+#Sınıfların özelliklerine erişmek
+
+VeriBilimci.bolum
+VeriBilimci.sql
+
+#Sınıfların özelliklerini değiştirmek
+
+VeriBilimci.sql = "Hayır"
+VeriBilimci.sql
+
+#Sınıf Örneklendirmesi (instantiation)
+
+ali = VeriBilimci()
+
+ali.sql
+ali.deneyim_yili
+ali.bolum
+
+ali.bildigi_diller.append("Python")
+ali.bildigi_diller
+
+veli = VeriBilimci()
+veli.sql
+
+veli.bildigi_diller
+
+
+#Örnek Özellikleri
+
+class VeriBilimci():
+    bildigi_diller = ["R","PYTHON"]
+    bolum = ''
+    sql = ''
+    def __init__(self):
+        self.bildigi_diller = []
+        self.bolum = ''
+
+ali = VeriBilimci()
+ali.bildigi_diller
+
+veli = VeriBilimci()
+veli.bildigi_diller
+
+ali.bildigi_diller.append("Python")
+ali.bildigi_diller
+
+veli.bildigi_diller
+veli.bildigi_diller.append("R")
+
+veli.bildigi_diller
+ali.bildigi_diller
+
+VeriBilimci.bildigi_diller
+
+
+ali.bolum
+
+VeriBilimci.bolum
+ali.bolum = 'istatistik'
+VeriBilimci.bolum
+ali.bolum
+
+veli.bolum
+veli.bolum = 'ybs'
+veli.bolum
+ali.bolum
+VeriBilimci.bolum
+
+#Örnek Metodları
+
+class VeriBilimci():
+    calisanlar = []
+    def __init__(self):
+        self.bildigi_diller = []
+        self.bolum = ''
+    def dil_ekle(self, yeni_dil):
+        self.bildigi_diller.append(yeni_dil)
+
+ali = VeriBilimci()
+ali.bildigi_diller
+ali.bolum
+
+veli = VeriBilimci()
+veli.bildigi_diller
+veli.bolum
+
+VeriBilimci.dil_ekle("R")
+
+ali.dil_ekle("R")
+ali.bildigi_diller
+
+veli.dil_ekle("Python")
+veli.bildigi_diller
+
+#Miras Yapıları (inheritance)
+
+class Employees():
+    def __init__(self):
+        self.FirstName = ""
+        self.LastName = ""
+        self.Address = ""
+
+class DataScience(Employees):
+    def __init__(self):
+        self.Programming = ""
+
+veribilimci1 = DataScience()
+
+class Marketing(Employees):
+    def __init__(self):
+        self.StoryTelling = ""
+
+
+mar1 = Marketing()
+
+
+class Employees_yeni():
+    def __init__(self,FirstName,LastName,Address):
+        self.FirstName = FirstName
+        self.LastName = LastName
+        self.Address = Address
+
+ali = Employees_yeni("a","b","c")
+ali.FirstName
+
+#Python'da Fonksiyonel Programlama
+"""
+Fonksiyonlar dilin bastacidir.
+Birinci sinif nesnelerdir.
+Yan etkisiz fonksiyonlar. (stateless, girdi-cıktı)
+Yüksek seviye fonksiyonlar
+vektörel operasyonlar
+"""
+
+#Yan Etkisiz Fonksiyonlar(Pure Functions)
+
+#Ornek1: Yan Etki
+
+A = 9
+
+def impure_sum(b):
+    return b + A
+
+def pure_sum(a,b):
+    return a + b
+
+impure_sum(5)
+
+pure_sum(3,4)
+
+
+#Ornek 2: Olumcul
+#OOP
+
+class LineCounter:
+    def __init__(self,filename):
+        self.file = open(filename, 'r')
+        self.lines = []
+
+    def read(self):
+        self.lines = [line for line in self.file]
+
+    def count(self):
+        return len(self.lines)
+
+lc = LineCounter('deneme.txt')
+
+print(lc.lines)
+print(lc.count())
+
+lc.read()
+
+print(lc.lines)
+print(lc.count())
+
+#FP
+
+def read(filename):
+    with open(filename, 'r') as f:
+        return [line for line in f]
+
+def count(lines):
+    return len(lines)
+
+example_lines = read('deneme.txt')
+lines_count = count(example_lines)
+lines_count
+
+#İsimsiz Fonksiyonlar (Anonymous Functions)
+
+def old_sum(a,b):
+    return a +b
+
+old_sum(4,5)
+
+new_sum = lambda a,b : a+b
+new_sum(54,5)
+
+sirasiz_liste = [("b",3),("a",8),("d",12),("c",1)]
+sirasiz_liste
+
+sorted(sirasiz_liste, key=lambda x: x[1])
+
+#Vektörel Operasyonlar (Vectorel Operations)
+#OOP
+a = [1,2,3,4]
+b = [2,3,4,5]
+
+ab = []
+
+range(0,len(a))
+
+for i in range(0, len(a)):
+    ab.append(a[i]*b[i])
+
+print(ab)
+
+#FP
+
+import numpy as np
+a = np.array([1,2,3,4])
+b = np.array([2,3,4,5])
+
+ab
+
+#Map & Filter & Reduce
+
+liste = [1,2,3,4,5]
+
+list(map(lambda x: x+10, liste))
+
+#filter
+
+liste = [1,2,3,4,5,6,7,8,9,10]
+
+list(filter(lambda x: x%2 == 0,liste))
+
+#reduce
+
+from functools import reduce
+liste = [1,2,3,4]
+
+reduce(lambda a,b: a+b,liste)
+
+#Hatalar / istisnalar(exceptions)
+
+a = 10
+b = 0
+
+a/b
+
+try:
+    print(a/b)
+except ZeroDivisionError:
+    print("Payda 0 olmaz")
+
+#Tip hatası
+a = 10
+b = "2"
+
+a/b
+
+try:
+    print(a/b)
+except TypeError:
+    print("Sayı string bölünmez")
